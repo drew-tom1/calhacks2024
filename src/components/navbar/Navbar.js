@@ -66,7 +66,7 @@ export default function Navbar() {
           </div>
           <a
             data-v-54e46119=""
-            href="https://github.com/"
+            href="https://github.com/tthacks24/chopchop"
             rel="noopener noreferrer"
             target="_blank"
             className="invisible md:visible"
