@@ -1,4 +1,3 @@
-import { NextApiResponse } from 'next';
 
 // In-memory list of connected clients (for simplicity)
 let clients = [];

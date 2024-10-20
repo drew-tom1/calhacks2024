@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import InputBox from "./inputBox";
 import SubmitButton from "./generateButton";
 import TaskList from "../tasking/taskItems/TaskList";
-import TaskTable from "../tasking/taskItems/TaskTable"; // Assuming TaskTable is in the same directory
 
 const GenerationWrapper = () => {
   const [prompt, setPrompt] = useState("");
