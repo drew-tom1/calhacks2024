@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="fixed top-0 w-full clearNav z-30 bg-gradient-to-tr from-slate-600">
       <div className="max-w-5xl mx-auto flex flex-wrap py-2 px-4 flex-col md:flex-row">
         <div className="flex flex-row items-center justify-between py-1">
-          <a href="/" className="flex items-center mb-2 md:mb-0">
+          <a href="/" className="flex items-center size-12 mb-0 md:mb-0">
             <Image
               src="/images/logo.png"
               alt="ChopChop Logo"

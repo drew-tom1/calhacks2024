@@ -12,7 +12,7 @@ export default function Hero() {
           <p className="mt-10 mb-6 text-8xl font-serif font-bold text-white">
             ChopChop
           </p>
-          <p className="font-sans font-bold text-palette-light text-base md:text-lg lg:text-5xl">
+          <p className="font-sans font-bold text-palette-light text-base md:text-lg lg:text-xl">
             Cooking Becoming Easy
           </p>
           {/* Include the GenerationWrapper component */}
