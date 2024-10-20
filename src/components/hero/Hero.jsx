@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import TaskTable from '../tasking/taskItems/TaskTable';
 
 export default function Hero() {
   const [prompt, setPrompt] = useState('');
@@ -12,7 +13,7 @@ export default function Hero() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/api/generate-tasks', {
+      const response = await fetch('/api/generation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,11 +25,46 @@ export default function Hero() {
         throw new Error('Failed to generate tasks');
       }
       const data = await response.json();
+      console.log(data)
       setTasks(data)
     } catch {error} {
       setError('Error generating tasks');
     }
   };
+
+  const sampleTasks = [
+    {
+        stepNum: 1,
+        taskName: "Gather Ingredients",
+        taskDescription: "Collect all necessary ingredients for the recipe."
+    },
+    {
+        stepNum: 2,
+        taskName: "Preheat Oven",
+        taskDescription: "Preheat the oven to 350°F (175°C) to prepare for baking."
+    },
+    {
+        stepNum: 3,
+        taskName: "Chop Vegetables",
+        taskDescription: "Wash and chop the vegetables into bite-sized pieces."
+    },
+    {
+        stepNum: 4,
+        taskName: "Mix Ingredients",
+        taskDescription: "In a bowl, mix the chopped vegetables with the seasoning."
+    },
+    {
+        stepNum: 5,
+        taskName: "Bake the Dish",
+        taskDescription: "Transfer the mixture into a baking dish and bake for 25 minutes."
+    },
+    {
+        stepNum: 6,
+        taskName: "Serve",
+        taskDescription: "Once done, take it out of the oven and serve hot."
+    }
+];
+
 
   return (
     <div className="bg-gradient-to-tr from-orange-500 to-red-400 min-h-screen w-screen flex flex-col justify-start items-center overflow-y-auto">
@@ -64,31 +100,7 @@ export default function Hero() {
           </form>
         </div>
       </div>
-      
-      {/* Table or Task List */}
-      <div className="w-full px-4 max-w-lg mt-8">
-        {(
-          <table className="border rounded table-auto w-full text-center text-white">
-            <thead>
-              <tr>
-                <th className="px-4 py-2">Step</th>
-                <th className="px-4 py-2">Task</th>
-                <th className="px-4 py-2">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tasks.map((task) => (
-                <tr key={task.stepNum}>
-                  <td className="border px-4 py-2">{task.stepNum}</td>
-                  <td className="border px-4 py-2">{task.taskName}</td>
-                  <td className="border px-4 py-2">{task.taskDescription}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-    </div>
-
+      <TaskTable tasks={sampleTasks} />
+    </div> 
   );
 }

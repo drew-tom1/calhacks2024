@@ -3,7 +3,7 @@ import Task from './Task';
 
 export default function TaskTable({ tasks }) {
   return (
-    <div className="task-table">
+    <div className="task-table border-2 rounded p-4">
       {tasks.map((task, index) => (
         <Task 
           key={index} 
