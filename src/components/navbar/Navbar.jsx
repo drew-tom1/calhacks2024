@@ -7,7 +7,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 w-full clearNav z-50 bg-slate-200">
+    <header className="fixed top-0 w-full clearNav z-50 bg-white">
       <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <div className="  flex flex-row items-center justify-between p-3 md:p-1">
           <a
@@ -17,9 +17,9 @@ export default function Navbar() {
             <Image
                 src="/images/logo.png"
                 alt="ChopChop Logo"
-                width={200}
-                height={100}
-                className=" h-9 w-auto"
+                width={350}
+                height={200}
+                className=" h-auto w-auto"
             />
           </a>
           <button
