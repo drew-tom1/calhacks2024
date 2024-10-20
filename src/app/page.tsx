@@ -4,8 +4,8 @@ import Hero from "@/components/hero/Hero";
 export default function Home() {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
+      <Navbar />
+      <Hero />
     </div>
   );
 }

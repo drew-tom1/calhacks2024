@@ -1,13 +1,15 @@
-import React from 'react';
-import TaskTable from './TaskTable';
+import React from "react";
+import TaskTable from "./TaskTable";
 
 export default function TaskList({ tasks }) {
   return (
-    <div>
+    <div className="bg-orange-600">
       {tasks.length > 0 ? (
         <TaskTable tasks={tasks} />
       ) : (
-        <p>No tasks generated yet. Please generate tasks to display them here.</p>
+        <p>
+          No tasks generated yet. Please generate tasks to display them here.
+        </p>
       )}
     </div>
   );
