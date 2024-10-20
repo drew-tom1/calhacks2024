@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { taskSchema } from "../models/taskSchema";
+import { taskSchema } from "./taskSchema";
 
 const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_API_KEY || ""
 
