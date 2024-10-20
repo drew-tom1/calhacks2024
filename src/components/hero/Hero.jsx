@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import generateTasks from '@/components/generation/taskGenerate';
+import recordAudio from '@/utils/recordAudio'; 
 
 export default function Hero() {
   const [prompt, setPrompt] = useState('');
@@ -12,6 +13,26 @@ export default function Hero() {
     event.preventDefault();
     const response = await generateTasks(prompt)
     console.log(response)
+  };
+
+  // Function to handle voice input via microphone button
+  const handleVoiceInput = async () => {
+    const audioBlob = await recordAudio(); // Call the utility function to record audio
+    const formData = new FormData();
+    formData.append('audio', audioBlob);
+
+    // Send the recorded audio to the transcription API route
+    const res = await fetch('/api/transcribe', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await res.json();
+    if (data.text) {
+      setPrompt(data.text);  // Set the transcribed text as the prompt
+      const response = await generateTasks(data.text);
+      console.log(response);
+    }
   };
 
   return (
@@ -43,6 +64,12 @@ export default function Hero() {
             >
               Go
             </button>
+            <button
+            className="mt-4 p-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white"
+            onClick={handleVoiceInput}
+          >
+            🎤 Speak
+          </button>
           </form>
         </div>
       </div>

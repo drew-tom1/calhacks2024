@@ -1,3 +1,5 @@
+// components/taskGenerate.ts
+
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { taskSchema } from "./taskSchema";
 
