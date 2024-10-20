@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router()
 
 router.post('/gesture', async (req: express.Request, res: express.Response) => {
-    const { gesture, ...gestureData } = req.body;
+    const { gesture } = req.body;
     console.log('Gesture route hit');
     switch (gesture) {
         case 'swipe':
