@@ -14,7 +14,6 @@ export default function Hero() {
           </p>
           {/* Include the GenerationWrapper component */}
           <GenerationWrapper />
-          <TaskTable></TaskTable>
         </div>
       </div>
     </div>
