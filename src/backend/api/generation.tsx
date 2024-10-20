@@ -4,7 +4,7 @@ const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_API_KEY || ""
 
 const genAI = new GoogleGenerativeAI(GOOGLE_API_KEY)
 
-export default async function Call(input: string) {
+export default async function generateTasks(input: string) {
     const taskSchema = {
         description: "list of tasks",
         type: SchemaType.ARRAY,
@@ -37,7 +37,6 @@ export default async function Call(input: string) {
 
     const result = await model.generateContent(input);
     const text = await result.response.text()
-    console.log(text)
     return text
       
 }
