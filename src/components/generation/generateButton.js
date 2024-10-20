@@ -32,7 +32,6 @@ const SubmitButton = ({ prompt, onTasksGenerated }) => {
       const data = await response.json(); // Get the response from the server
       console.log("Right before onTasksGenerated callback");
 
-      // Log and check if onTasksGenerated is available
       console.log("onTasksGenerated:", onTasksGenerated);
 
       if (onTasksGenerated) {
