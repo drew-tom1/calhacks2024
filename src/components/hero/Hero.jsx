@@ -17,24 +17,31 @@ export default function Hero() {
 
   // Function to handle voice input via microphone button
   const handleVoiceInput = async () => {
-    const audioBlob = await recordAudio(); // Call the utility function to record audio
-    const formData = new FormData();
-    formData.append('audio', audioBlob);
+    try {
+      const audioBlob = await recordAudio();  // Record audio using the Web Audio API
+      const formData = new FormData();
+      formData.append('audio', audioBlob);
 
-    // Send the recorded audio to the transcription API route
-    const res = await fetch('/api/transcribe', {
-      method: 'POST',
-      body: formData,
-    });
+      const res = await fetch('/api/transcribe', {
+        method: 'POST',
+        body: formData,
+      });
 
-    const data = await res.json();
-    if (data.text) {
-      setPrompt(data.text);  // Set the transcribed text as the prompt
-      const response = await generateTasks(data.text);
-      console.log(response);
+      const data = await res.json();  // Log the raw response to inspect it
+      console.log('Response from API:', data);
+
+      if (data.text) {
+        setPrompt(data.text);  // Use transcribed text
+        const response = await generateTasks(data.text);  // Send the transcribed text to the Gemini API
+        setTasks(response);
+      } else {
+        console.error('Error in transcription response:', data.error);
+      }
+    } catch (err) {
+      console.error('Error during voice input handling:', err);
     }
   };
-
+  
   return (
     <div className="bg-gradient-to-tr from-orange-500 to-red-400 relative h-screen w-screen">
       <div className="absolute inset-0 flex flex-col justify-center items-center w-5/6 max-w-lg mx-auto text-center">
