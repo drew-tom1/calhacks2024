@@ -1,8 +1,4 @@
-import React from "react";
-import Task from "./Task"; // Import the Task component
-
-export default function TaskTable({ tasks }) {
-  // If tasks is a string, parse it. Otherwise, ensure it's an array.
+export default function TaskTable({ tasks, completedTaskIds }) {
   let validTasks;
 
   if (typeof tasks === "string") {
@@ -20,17 +16,23 @@ export default function TaskTable({ tasks }) {
 
   return (
     <div className="task-table max-w-full border-3 rounded p-2 max-h-80 overflow-y-scroll">
-      {" "}
-      {/* h-64 sets a fixed height, adjust as needed */}
       {validTasks.length > 0 ? (
-        validTasks.map((currentTask, index) => (
-          <Task
-            key={index}
-            stepNum={currentTask.stepNum}
-            taskName={currentTask.taskName}
-            taskDescription={currentTask.taskDescription}
-          />
-        ))
+        validTasks.map((currentTask, index) => {
+          const isCompleted = completedTaskIds.includes(index); // Check if the task is completed
+
+          return (
+            <div
+              key={index}
+              className={`task-item ${isCompleted ? "opacity-50" : ""}`} // Apply gray-out class if task is completed
+            >
+              <Task
+                stepNum={currentTask.stepNum}
+                taskName={currentTask.taskName}
+                taskDescription={currentTask.taskDescription}
+              />
+            </div>
+          );
+        })
       ) : (
         <p>No tasks generated yet.</p>
       )}

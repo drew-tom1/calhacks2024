@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/pages/api/generateTask/taskSchema.js"
-  ],
+, "src/app/api/gesture/route.js"  ],
   "exclude": ["node_modules"]
 }
