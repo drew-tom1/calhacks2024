@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import GenerationWrapper from "../generation/GenerationWrapper";
+import GenerationWrapper from "@/component/generation/GenerationWrapper";
 import TaskTable from "../tasking/taskItems/TaskTable";
 
 export default function Hero() {
