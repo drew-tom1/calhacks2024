@@ -1,6 +1,8 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { broadcastSSE } from './server-sent-events';
 
-export default async function handler(req, res) {
+// API route handler for gesture detection
+export async function POST(req: NextRequest) {
   const body = await req.json(); // Parse JSON body
   const { gesture } = body;
 
@@ -10,17 +12,15 @@ export default async function handler(req, res) {
     case 'open_hand':
       console.log('Open hand detected, broadcasting event');
       broadcastSSE({ action: 'complete_task' });
-      res.status(200).json({ message: 'Open hand gesture processed' });
-      break;
+      return NextResponse.json({ message: 'Open hand gesture processed' });
 
     case 'fist':
       console.log('Fist detected, broadcasting event');
       broadcastSSE({ action: 'go_back_task' });
-      res.status(200).json({ message: 'Fist gesture processed' });
-      break;
+      return NextResponse.json({ message: 'Fist gesture processed' });
 
     default:
       console.log('Unknown gesture');
-      res.status(400).json({ error: 'Unknown gesture' });
+      return NextResponse.json({ error: 'Unknown gesture' }, { status: 400 });
   }
 }
