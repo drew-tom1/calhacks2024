@@ -2,6 +2,7 @@
 
 import React from 'react';
 import GenerationWrapper from '../generation/GenerationWrapper';  
+import TaskTable from '../tasking/taskItems/TaskTable';
 
 export default function Hero() {
   return (
@@ -13,6 +14,7 @@ export default function Hero() {
           </p>
           {/* Include the GenerationWrapper component */}
           <GenerationWrapper />
+          <TaskTable></TaskTable>
         </div>
       </div>
     </div>

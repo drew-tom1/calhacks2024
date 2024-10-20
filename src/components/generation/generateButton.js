@@ -1,45 +1,27 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import InputBox from './inputBox';
+import SubmitButton from './generateButton';
+import TaskTable from '../tasking/taskItems/TaskTable'; 
+const GenerationWrapper = () => {
+  const [prompt, setPrompt] = useState('');
+  const [tasks, setTasks] = useState([]); // State to hold the generated tasks
 
-const SubmitButton = ({ prompt }) => {
-  const handleClick = async () => {
-    if (!prompt) {
-      console.error('Prompt is required');
-      return;
-    }
-
-    try {
-        console.log('Prompt:', prompt);  // Log the prompt
-      // Make a POST request to the API route
-      const response = await fetch('../api/generateTask', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ input: prompt }),  // Send the prompt to the API
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to generate tasks');
-      }
-
-      const data = await response.json();  // Get the response from the server
-      console.log('Generated tasks:', data.content);  // Log the generated tasks
-    } catch (error) {
-      console.error('Error generating tasks:', error);
-    }
+  // This function will be passed to SubmitButton and called when tasks are generated
+  const handleTasksGenerated = (newTasks) => {
+    console.log('Tasks generated in generationwrapper', newTasks); // Log the generated tasks
+    setTasks(newTasks); // Update tasks state with the generated tasks
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className="py-3 px-4 bg-palette-primary hover:bg-palette-dark text-white text-sm sm:text-base font-semibold rounded-r-lg border border-transparent 
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-palette-primary"
-    >
-      Go
-    </button>
+    <div className="font-secondary flex flex-col w-full px-2 max-w-lg mx-auto justify-center space-y-4">
+      <InputBox prompt={prompt} setPrompt={setPrompt} />
+      {/* Pass the handleTasksGenerated function to SubmitButton */}
+      <SubmitButton prompt={prompt} onTasksGenerated={handleTasksGenerated} /> {/* Ensure this line passes the function */}
+      {tasks.length > 0 && <TaskTable tasks={tasks} />} {/* Render TaskTable when tasks are generated */}
+    </div>
   );
 };
 
-export default SubmitButton;
+export default GenerationWrapper;
