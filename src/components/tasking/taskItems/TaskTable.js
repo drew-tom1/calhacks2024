@@ -1,3 +1,5 @@
+import Task from "./Task";
+
 export default function TaskTable({ tasks, completedTaskIds }) {
   let validTasks;
 
