@@ -54,13 +54,13 @@ export default function Navbar() {
         >
           <div className="mx-auto pt-1 pl-1 flex flex-wrap items-center text-center text-1xl justify-center space-x-8">
 
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+            <a className="border-white rounded cursor-pointer text-black hover:text-orange-500 duration-300 hover:scale-105 font-semibold tr04">
               Create New
             </a>
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+            <a className="border-white rounded cursor-pointer text-black hover:text-orange-500 duration-300 hover:scale-105 font-semibold tr04">
               Features
             </a>
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+            <a className="border-white rounded cursor-pointer text-black hover:text-orange-500 duration-300 hover:scale-105 font-semibold tr04">
               About
             </a>
           </div>
@@ -69,12 +69,12 @@ export default function Navbar() {
             href="https://github.com/"
             rel="noopener noreferrer"
             target="_blank"
-            className="pl-7 invisible md:visible"
+            className="invisible md:visible"
           >
             <svg
               data-v-54e46119=""
-              width="30"
-              height="20"
+              width="72"
+              height="36"
               viewBox="0 0 25 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
