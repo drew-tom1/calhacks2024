@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import generateTasks from '@/app/api/generation/route';
+import generateTasks from '@/components/generation/taskGenerate';
 
 export default function Hero() {
   const [prompt, setPrompt] = useState('');
