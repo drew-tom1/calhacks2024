@@ -1,29 +1,26 @@
-'use client';
+"use client";
 
 import React from "react";
-import Image from "next/image"
+import Image from "next/image";
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 w-full clearNav z-50 bg-white">
-      <div className="max-w-5xl mx-auto flex flex-wrap p-5 flex-col md:flex-row">
-        <div className="  flex flex-row items-center justify-between p-3 md:p-1">
-          <a
-            href="/"
-            className=" flex items-center mb-3 md:mb-0"
-          >
+    <header className="fixed top-0 w-full clearNav z-30 bg-gradient-to-tr from-slate-600">
+      <div className="max-w-5xl mx-auto flex flex-wrap py-2 px-4 flex-col md:flex-row">
+        <div className="flex flex-row items-center justify-between py-1">
+          <a href="/" className="flex items-center size-12 mb-0 md:mb-0">
             <Image
-                src="/images/logo.png"
-                alt="ChopChop Logo"
-                width={350}
-                height={200}
-                className=" h-auto w-auto"
+              src="/images/logo.png"
+              alt="ChopChop Logo"
+              width={250} // Adjusted width to make logo smaller if needed
+              height={150} // Adjusted height to keep proportions
+              className="h-auto w-auto"
             />
           </a>
           <button
-            className="text-white pb-4 cursor-pointer leading-none px-3 py-1 md:hidden outline-none focus:outline-none content-end ml-auto"
+            className="text-white pb-3 cursor-pointer leading-none px-2 py-1 md:hidden outline-none focus:outline-none ml-auto"
             type="button"
             aria-label="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -52,29 +49,28 @@ export default function Navbar() {
             (navbarOpen ? " flex" : " hidden")
           }
         >
-          <div className="mx-auto pt-1 pl-1 flex flex-wrap items-center text-center text-1xl justify-center space-x-8">
-
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+          <div className="mx-auto pt-1 flex flex-wrap items-center text-center text-sm md:text-base justify-center space-x-6">
+            <a className="text-white hover:text-orange-500 duration-300 hover:scale-105 font-semibold">
               Create New
             </a>
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+            <a className="text-white hover:text-orange-500 duration-300 hover:scale-105 font-semibold">
               Features
             </a>
-            <a className="border-white rounded cursor-pointer text-black hover:underline font-semibold tr04">
+            <a className="text-white hover:text-orange-500 duration-300 hover:scale-105 font-semibold">
               About
             </a>
           </div>
           <a
             data-v-54e46119=""
-            href="https://github.com/"
+            href="https://github.com/tthacks24/chopchop"
             rel="noopener noreferrer"
             target="_blank"
-            className="pl-7 invisible md:visible"
+            className="invisible md:visible"
           >
             <svg
               data-v-54e46119=""
-              width="30"
-              height="20"
+              width="48" // Reduced size for a thinner navbar
+              height="24"
               viewBox="0 0 25 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

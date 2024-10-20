@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // API route handler for gesture detection
 export async function POST(req: NextRequest) {
   const body = await req.json(); // Parse JSON body
-  const { gesture } = body;
+  const { gesture, taskId } = body;
 
   console.log('Gesture route hit');
 
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     case 'open_hand':
         console.log('Open hand gesture detected');
-        return NextResponse.json({ message: 'Open hand detected!' });
+        return NextResponse.json({ message: 'Open hand detected!', taskId });
 
     case 'fist':
         console.log('Fist detected');
