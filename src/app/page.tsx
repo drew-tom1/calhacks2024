@@ -1,19 +1,20 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import Call from "@/backend/api/test";
+import generateTasks from "@/backend/api/generation";
 
 export default function Home() {
-  const [result, setResult] = useState<string>("");
+  const [taskList, setTaskList] = useState<string>("");
 
-  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async () => {
     try {
-      const responseText = await Call(); // Call the async function
-      setResult(responseText); // Set the result to display it
+      const responseText = await generateTasks("I want to cook a steak"); 
+      setTaskList(responseText);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+  
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -36,7 +37,7 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
         </ol>
         <button onClick={handleClick}>Generate Recipes</button>
-        {result && <p>{result}</p>}
+        {taskList && <p>{taskList}</p>}
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
