@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { broadcastSSE } from "./server-sent-events";
 
 // API route handler for gesture detection
-export async function POST(req: NextRequest) {
+export async function POST(req) {
   const body = await req.json(); // Parse JSON body
   const { gesture } = body;
 
